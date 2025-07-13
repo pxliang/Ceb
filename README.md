@@ -1,7 +1,7 @@
 # Ceb
 
 
-## Instalation
+## Installation
 
 ```
 conda create -n Ceb python=3.12
