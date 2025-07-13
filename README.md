@@ -55,8 +55,8 @@ sh Scripts/train_classifier_SIM.sh
 sh Scripts/SIM_temporal.sh
 ```
 
-## 🙏 Acknowledgement
-We appreciate the following package: 
+## 🌟 Acknowledgement
+We appreciate the following package, upon which our implementation is based. We have modified the original watershed algorithm provided by:
 
 [watershed](https://github.com/mzur/watershed)
 
