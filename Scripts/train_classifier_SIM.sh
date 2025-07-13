@@ -1,15 +1,9 @@
 #!/bin/bash
-#$ -M pliang@nd.edu
-#$ -q gpu -l gpu=1
-#$ -m abe
-#$ -r y
 
 data=Fluo-N2DH-SIM+
 min_cc=30
 
-export PATH=/afs/crc.nd.edu/user/p/pliang/.conda/envs/SparseConv/bin:$PATH
-export LD_LIBRARY_PATH=/afs/crc.nd.edu/user/p/pliang/.conda/envs/SparseConv/lib:$LD_LIBRARY_PATH
-
+source activate Ceb
 
 CODE_DIR=../Ceb
 cd ${CODE_DIR}
@@ -25,7 +19,7 @@ python3 top_pose_classifier.py \
     --test_dir ./boundary_pm/${data}/test/ \
     --phase 'test' \
     --num_class 2 \
-    --checkpoint ./checkpoints/${data}/epoch_019.pth \
+    --checkpoint ./checkpoints/${data}/best.pth \
     --result_dir ./result/${data} \
     --model_name resnet \
 

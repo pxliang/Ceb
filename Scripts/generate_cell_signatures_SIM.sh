@@ -1,29 +1,25 @@
 #!/bin/bash
-#$ -M pliang@nd.edu
-#$ -q gpu -l gpu=1
-#$ -m abe
-#$ -r y
 
 data=Fluo-N2DH-SIM+
 min_cc=30
 exp=train
 
-export PATH=/afs/crc.nd.edu/user/p/pliang/.conda/envs/HEMD_v2/bin:$PATH
-export LD_LIBRARY_PATH=/afs/crc.nd.edu/user/p/pliang/.conda/envs/HEMD_v2/lib:$LD_LIBRARY_PATH
+
+source activate Ceb
 
 
 CODE_DIR=/users/pliang/afs/Ceb/Ceb
 cd ${CODE_DIR}
 
-PM_dir=./examples/${data}/PM/${exp}
-gtpath=./examples/${data}/GT/${exp}
+PM_dir=../examples/${data}/PM/${exp}
+gtpath=../examples/${data}/GT/${exp}
 
 python3 find_global_max.py --prob_dir ${PM_dir} \
   --min_cc ${min_cc} \
   --ws_result_dir "./global_max/${data}/${exp}/"
 
- module load matlab
- matlab -nodisplay -nosplash -nojvm -r "pre_processing('${PM_dir}', './global_max/${data}/${exp}/', './processed_pm/${data}/${exp}/');exit"
+module load matlab
+matlab -nodisplay -nosplash -nojvm -r "pre_processing('${PM_dir}', './global_max/${data}/${exp}/', './processed_pm/${data}/${exp}/');exit"
 
 python3 modify_watershed.py \
   --prob_processed_dir ./processed_pm/${data}/${exp}/ \
@@ -41,8 +37,8 @@ python3 GT_matching.py \
 
 
 exp=test
-PM_dir_test=./examples/${data}/PM/${exp}
-gtpath_test=./examples/${data}/GT/${exp}
+PM_dir_test=../examples/${data}/PM/${exp}
+gtpath_test=../examples/${data}/GT/${exp}
 
 python3 find_global_max.py --prob_dir ${PM_dir_test} \
   --min_cc ${min_cc} \

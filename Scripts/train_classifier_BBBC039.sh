@@ -1,31 +1,25 @@
 #!/bin/bash
-#$ -M pliang@nd.edu
-#$ -q gpu -l gpu=1
-#$ -m abe
-#$ -r y
 
 data=BBBC039
 min_cc=30
 
-export PATH=/afs/crc.nd.edu/user/p/pliang/.conda/envs/SparseConv/bin:$PATH
-export LD_LIBRARY_PATH=/afs/crc.nd.edu/user/p/pliang/.conda/envs/SparseConv/lib:$LD_LIBRARY_PATH
-
+source activate Ceb
 
 CODE_DIR=../Ceb
 cd ${CODE_DIR}
 
-#python3 top_pose_classifier.py \
-#    --data_dir ./boundary_pm/${data}/train/ \
-#    --num_class 2 \
-#    --num_epoch 20 \
-#    --checkpoint_save_dir ./checkpoints/${data}/ \
-#    --model_name resnet \
+python3 top_pose_classifier.py \
+    --data_dir ./boundary_pm/${data}/train/ \
+    --num_class 2 \
+    --num_epoch 20 \
+    --checkpoint_save_dir ./checkpoints/${data}/ \
+    --model_name resnet \
 
 python3 top_pose_classifier.py \
     --test_dir ./boundary_pm/${data}/test/ \
     --phase 'test' \
     --num_class 2 \
-    --checkpoint ./checkpoints/${data}/epoch_018.pth \
+    --checkpoint ./checkpoints/${data}/best.pth \
     --result_dir ./result/${data} \
     --model_name resnet \
 

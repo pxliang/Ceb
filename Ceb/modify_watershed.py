@@ -51,7 +51,7 @@ class Watershed(object):
       # [y, x] pairs of pixel coordinates of the flattened image.
       pixels = np.mgrid[0:height, 0:width].reshape(2, -1).T
       # Coordinates of neighbour pixels for each pixel.
-      neighbours = np.array([self._get_neighbors(height, width, p) for p in pixels])
+      neighbours = np.array([self._get_neighbors(height, width, p) for p in pixels], dtype=object)
       if len(neighbours.shape) == 3:
          # Case where all pixels have the same number of neighbours.
          neighbours = neighbours.reshape(height, width, -1, 2)

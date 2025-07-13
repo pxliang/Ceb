@@ -425,7 +425,7 @@ def main(args):
         image_datasets = ImageDataset(args.data_dir, data_transforms['train'])
         dataloaders_dict = defaultdict()
 
-        if args.val_dir is not "":
+        if args.val_dir != "":
             val_datasets = ImageDataset(args.val_dir, data_transforms['val'])
             dataloaders_dict['train'] = torch.utils.data.DataLoader(image_datasets, batch_size=args.batch_size, shuffle=True,
                                                                     num_workers=4)
