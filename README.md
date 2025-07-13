@@ -55,5 +55,10 @@ sh Scripts/train_classifier_SIM.sh
 sh Scripts/SIM_temporal.sh
 ```
 
+## 🙏 Acknowledgement
+We appreciate the following package: 
+
+[watershed](https://github.com/mzur/watershed)
+
 
 
