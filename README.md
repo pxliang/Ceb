@@ -56,7 +56,7 @@ sh Scripts/SIM_temporal.sh
 ```
 
 ## 🌟 Acknowledgement
-We appreciate the following package, upon which our implementation is based. We have modified the original watershed algorithm provided by:
+We appreciate the following package, upon which our watershed implementation is based. We have modified the original watershed algorithm provided by:
 
 [watershed](https://github.com/mzur/watershed)
 
